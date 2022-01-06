@@ -15,7 +15,7 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+    
     <title>北邮信通院选课指南</title>
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -65,7 +65,7 @@
             
 
             <div class="col col-12 mb-3 text-center">
-                <button type="button" class="btn btn-primary" style="width: 100%;" id="confirmBtn">确认</button>
+                <button type="button" class="btn btn-primary" style="width: 100%;" id="cofirm_btn">确认</button>
             </div>
         </div>
 
@@ -76,30 +76,29 @@
     </div>
 
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="data.js"></script>
     <script>
-        function getValuesInObjs(arr, key) {
-            var resultArr = new Array();
+        function get_value_in_obj(arr, key) {
+            var result_arr = new Array();
             arr.forEach(function (obj) {
-                if (!resultArr.includes(obj[key])) {
-                    resultArr.push(obj[key]);
+                if (!result_arr.includes(obj[key])) {
+                    result_arr.push(obj[key]);
                 }
             });
-            return resultArr.sort(function (item1, item2) {
+            return result_arr.sort(function (item1, item2) {
                 return item1.localeCompare(item2, 'zh');
             });
         }
-        function filterValuesInArray(arr, key, value) {
-            var resultArr = new Array();
+        function filter_value_in_array(arr, key, value) {
+            var result_arr = new Array();
             arr.forEach(function (obj) {
                 if (obj[key] == value) {
-                    resultArr.push(obj);
+                    result_arr.push(obj);
                 }
             });
-            return resultArr;
+            return result_arr;
         }
-        function setSelectOptions(selector, options) {
+        function set_select_options(selector, options) {
             selector.empty();
             options.forEach(function (value, i) {
                 var option = new Option(value, i);
@@ -110,9 +109,9 @@
         var department = $('#department_selector');
         var course = $('#course_selector');
         var teacher = $('#teacher_selector');
-        var confirmBtn = $('#confirmBtn');
-        var contentDiv = $('.descriptions');
-        var course_types = getValuesInObjs(data, 'course_type')
+        var cofirm_btn = $('#cofirm_btn');
+        var content_div = $('.descriptions');
+        var course_types = get_value_in_obj(data, 'course_type')
         var departments = new Array();
         var courses = new Array();
         var teachers = new Array();
@@ -121,28 +120,28 @@
         var current_teacher = '';
         course_type.change(function () {
             current_course_type = course_types[course_type.val()];
-            var thisData = filterValuesInArray(data, 'course_type', current_course_type);
-            courses = getValuesInObjs(thisData, 'course');
-            setSelectOptions(course, courses);
+            var this_data = filter_value_in_array(data, 'course_type', current_course_type);
+            courses = get_value_in_obj(this_data, 'course');
+            set_select_options(course, courses);
             course.trigger('change')
         });
         course.change(function () {
             current_course = courses[course.val()];
-            var thisData = filterValuesInArray(data, 'course_type', current_course_type)
-            thisData = filterValuesInArray(thisData, 'course', current_course);
-            teachers = getValuesInObjs(thisData, 'teacher');
-            setSelectOptions(teacher, teachers);
+            var this_data = filter_value_in_array(data, 'course_type', current_course_type)
+            this_data = filter_value_in_array(this_data, 'course', current_course);
+            teachers = get_value_in_obj(this_data, 'teacher');
+            set_select_options(teacher, teachers);
             teacher.trigger('change');
         })
         teacher.change(function () {
             current_teacher = teachers[teacher.val()];
         })
-        confirmBtn.click(function () {
-            var thisData = filterValuesInArray(data, 'course_type', current_course_type);
-            thisData = filterValuesInArray(thisData, 'course', current_course);
-            thisData = filterValuesInArray(thisData, 'teacher', current_teacher);
-            contentDiv.empty();
-            thisData.forEach(function (value, i) {
+        cofirm_btn.click(function () {
+            var this_data = filter_value_in_array(data, 'course_type', current_course_type);
+            this_data = filter_value_in_array(this_data, 'course', current_course);
+            this_data = filter_value_in_array(this_data, 'teacher', current_teacher);
+            content_div.empty();
+            this_data.forEach(function (value, i) {
                 var desc = value['description'];
                 var score = value['score']
                 if(score==""){ score='暂无' };
@@ -153,10 +152,10 @@
                             <p class="card-text">给分：${score}</p>
                             <p class="card-text">描述：${desc}</p>
                         </div></div >`);
-                contentDiv.append($(card));
+                content_div.append($(card));
             })
         });
-        setSelectOptions(course_type, course_types);
+        set_select_options(course_type, course_types);
         course_type.trigger('change');
 
 
