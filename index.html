@@ -1,0 +1,158 @@
+<html>
+
+<head>
+    <title>北京邮电大学信息与通信工程学院选课指南</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    </style>
+</head>
+
+<body>
+    <h1 class="mt-3 mb-5 text-center">信息与通信工程学院选课信息参考</h1>
+    <div class="container mt-3">
+
+        <div class="row">
+            <div class="col col-6">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="course_type_selector">选择选修课类别</label>
+                    </div>
+                    <select class="custom-select" id="course_type_selector">
+                        <option selected>选修课类别</option>
+                    </select>
+                </div>
+            </div>
+            <!-- <div class="col col-4">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="department_selector">选择学院</label>
+                    </div>
+                    <select class="custom-select" id="department_selector">
+                        <option selected>选择查询学院</option>
+                    </select>
+                </div>
+            </div> -->
+            <div class="col col-6">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="course_selector">选择课程</label>
+                    </div>
+                    <select class="custom-select" id="course_selector">
+                        <option selected>选择查询课程</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class="col col-6">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="teacher_selector">选择授课教师</label>
+                    </div>
+                    <select class="custom-select" id="teacher_selector">
+                        <option selected>选择姓名</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col col-6 mb-3 text-center">
+                <button type="button" class="btn btn-primary" style="width: 90%;" id="confirmBtn">确认</button>
+            </div>
+        </div>
+
+
+        <div class="descriptions">
+
+        </div>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="data.js"></script>
+    <script>
+        function getValuesInObjs(arr, key) {
+            var resultArr = new Array();
+            arr.forEach(function (obj) {
+                if (!resultArr.includes(obj[key])) {
+                    resultArr.push(obj[key]);
+                }
+            });
+            return resultArr.sort(function (item1, item2) {
+                return item1.localeCompare(item2, 'zh');
+            });
+        }
+        function filterValuesInArray(arr, key, value) {
+            var resultArr = new Array();
+            arr.forEach(function (obj) {
+                if (obj[key] == value) {
+                    resultArr.push(obj);
+                }
+            });
+            return resultArr;
+        }
+        function setSelectOptions(selector, options) {
+            selector.empty();
+            options.forEach(function (value, i) {
+                var option = new Option(value, i);
+                selector.append($(option));
+            });
+        }
+        var course_type = $('#course_type_selector');
+        var department = $('#department_selector');
+        var course = $('#course_selector');
+        var teacher = $('#teacher_selector');
+        var confirmBtn = $('#confirmBtn');
+        var contentDiv = $('.descriptions');
+        var course_types = getValuesInObjs(data, 'course_type')
+        var departments = new Array();
+        var courses = new Array();
+        var teachers = new Array();
+        var current_course_type = '';
+        var current_course = '';
+        var current_teacher = '';
+        course_type.change(function () {
+            current_course_type = course_types[course_type.val()];
+            var thisData = filterValuesInArray(data, 'course_type', current_course_type);
+            courses = getValuesInObjs(thisData, 'course');
+            setSelectOptions(course, courses);
+            course.trigger('change')
+        });
+        course.change(function () {
+            current_course = courses[course.val()];
+            var thisData = filterValuesInArray(data, 'course_type', current_course_type)
+            thisData = filterValuesInArray(thisData, 'course', current_course);
+            teachers = getValuesInObjs(thisData, 'teacher');
+            setSelectOptions(teacher, teachers);
+            teacher.trigger('change');
+        })
+        teacher.change(function () {
+            current_teacher = teachers[teacher.val()];
+        })
+        confirmBtn.click(function () {
+            var thisData = filterValuesInArray(data, 'course_type', current_course_type);
+            thisData = filterValuesInArray(thisData, 'course', current_course);
+            thisData = filterValuesInArray(thisData, 'teacher', current_teacher);
+            contentDiv.empty();
+            thisData.forEach(function (value, i) {
+                var desc = value['description'];
+                var score = value['score']
+                if(score==""){ score='暂无' };
+                var card = $(`<div class="card mb-3">
+                    <h5 class="card-header" > ${current_course_type} - ${current_course}</h5 >
+                        <div class="card-body">
+                            <h3 class="card-title">授课教师：${current_teacher}</h3>
+                            <p class="card-text">给分：${score}</p>
+                            <p class="card-text">描述：${desc}</p>
+                        </div></div >`);
+                contentDiv.append($(card));
+            })
+        });
+        setSelectOptions(course_type, course_types);
+        course_type.trigger('change');
+
+
+    </script>
+</body>
+
+
+</html>
