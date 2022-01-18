@@ -2,6 +2,21 @@
 <p align="center"><b>专业选修课/英语选修课/体育选修课/公共选修课/课程设计/其他</b></p>
 <p align="center"><b>投稿链接：https://www.wjx.cn/vj/wGw4GYE.aspx</b></p>
 
+<p align="center">
+   <img src="https://badgen.net/github/license/lgc0208/
+course_reference_SICE_BUPT/main/">
+    <img src="https://badgen.net/github/checks/lgc0208/
+course_reference_SICE_BUPT/main/">
+    <img src="https://badgen.net/github/last-commit/lgc0208/
+course_reference_SICE_BUPT/main/">
+    <img src="https://badgen.net/github/commits/lgc0208/
+course_reference_SICE_BUPT/main/">
+  <img src="https://badgen.net/github/stars/lgc0208/
+course_reference_SICE_BUPT">
+    <img src="https://badgen.net/github/assets-dl/lgc0208/
+course_reference_SICE_BUPT/main">
+</p>
+
 
 ## 目录
 
