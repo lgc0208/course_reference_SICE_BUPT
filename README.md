@@ -1,5 +1,5 @@
 <h2 align="center"> 北京邮电大学信息与通信工程学院选课参考指南 </h2>
-<p align="center"><b>专业选修课/英语选修课/体育选修课/公共选修课</b></p>
+<p align="center"><b>专业选修课/英语选修课/体育选修课/公共选修课/课程设计/其他</b></p>
 <p align="center"><b>投稿链接：https://www.wjx.cn/vj/wGw4GYE.aspx</b></p>
 
 
