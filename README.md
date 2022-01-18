@@ -3,18 +3,12 @@
 <p align="center"><b>投稿链接：https://www.wjx.cn/vj/wGw4GYE.aspx</b></p>
 
 <p align="center">
-    <a href="https://www.npmjs.com/package/vue"><img src="https://badgen.net/github/license/lgc0208/
-      course_reference_SICE_BUPT/main/"></a>
-     <a href="https://www.npmjs.com/package/vue"><img src="https://badgen.net/github/checks/lgc0208/
-course_reference_SICE_BUPT/main/">
-     <a href="https://www.npmjs.com/package/vue"><img src="https://badgen.net/github/last-commit/lgc0208/
-course_reference_SICE_BUPT/main/">
-    <img src="https://badgen.net/github/commits/lgc0208/
-course_reference_SICE_BUPT/main/">
-  <img src="https://badgen.net/github/stars/lgc0208/
-course_reference_SICE_BUPT">
-    <img src="https://badgen.net/github/assets-dl/lgc0208/
-course_reference_SICE_BUPT/main">
+    <img src="https://badgen.net/github/license/lgc0208/course_reference_SICE_BUPT/">
+    <img src="https://badgen.net/github/checks/lgc0208/course_reference_SICE_BUPT/main/">
+    <img src="https://badgen.net/github/commits/lgc0208/course_reference_SICE_BUPT/main/">
+    <img src="https://badgen.net/github/last-commit/lgc0208/course_reference_SICE_BUPT/main/">
+    <img src="https://badgen.net/github/stars/lgc0208/course_reference_SICE_BUPT">
+    <img src="https://badgen.net/github/assets-dl/lgc0208/course_reference_SICE_BUPT">
 </p>
 
 
