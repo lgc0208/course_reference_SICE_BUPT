@@ -24,6 +24,8 @@
 ## 目录结构描述
 
 ```
+├── CNAME                      // 域名映射
+├── LICENSE                    // 开源协议
 ├── README.md                  // help
 ├── index.html                 // 网页端代码
 ├── data.js 	        	   // 评价数据
