@@ -42,7 +42,7 @@
 
 ### 只想检索数据
 
-1. 网址：www.xtxkzn.ml （信通选课指南.机器学习）
+1. ~网址：www.xtxkzn.ml （信通选课指南.机器学习）~【被 BAN 了】
 2. Github Page 网址（备用）：https://lgc0208.github.io/course_reference_SICE_BUPT/
 3. 下载文件后，使用浏览器打开 `index.html` 文件（此时最好保持联网状态，因为代码里使用了`bootstrap`和`jquery`，不联网可能 UI 会很乱）
 
